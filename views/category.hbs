@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <meta name="description" content="Portfolio Website of a professional developer based in India, Specializing in AEM Node.JS and web development. Gajendra provides consulting, development and support services for AEM, Node.js and Web Solutions and have experience working for various industry leader clients.">
+  <meta name="keywords" content="AEM,CQ5,Node JS, Node.JS, Web Development, Solutions, Consulting, Hire, CodeLilt">
+  <meta name="author" content="Gajendra Dagur">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta property="og:image" content="/images/logo.png">
+  <meta property="og:url" content="http://www.codelilt.com/">
+  <meta property="og:site_name" content="Gajendra Dagur Portfolio- AEM, Node.JS">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Portfolio Website of a professional developer based in India, Specializing in AEM Node.JS and web development. Gajendra provides consulting, development and support services for AEM, Node.js and Web development and have experience working for various industry leader clients.">
+  <meta property="og:title" content="AEM, Node.JS and Web Articles - Gajendra Dagur">
+  <title>CodeLilt - AEM, Node.js and Web Blog Artilces</title>
+
+  {{> common_JS_CSS}}
+<script type="text/javascript">
+  $( document ).ready(function()  {
+      $("div.article-desc").text(function() {
+        return $(this).text().substr(0, 200)+".....";
+      });
+  });
+</script>
+  <link rel="stylesheet" href="/stylesheets/front.css">
+  {{> heading_animation_js}}
+{{#if PROD_MODE}}
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-80562674-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+{{/if}}
+</head>
+<body>
+{{> nav_grey}}
+  <div class="container-fluid full-bg-white" style="min-height: 85%">
+    
+      <div class="row" style="margin-top:8vh">
+        <div class="col-md-1"></div>
+        <div class="article-heading-div col-md-8" style="border:1.5px solid #cccccc;height:100%;background-color:rgba(255, 255, 255, 0.85);border-radius: 7px">
+        <div class="container-fluid">
+        {{#each posts}}
+       <div class="row hidden-xs" style="margin-top:4vh;margin-bottom:4vh">
+            
+            <div class="col-md-12">
+            <a class="article-heading-text" href="/article/{{url}}">{{heading}}</a>  <span class="heading-desc"> --{{date}} / By {{username}} </span>
+              <div class="article-desc" style="max-height:7vh;overflow:hidden; text-overflow:ellipsis;">{{{content}}}</div>
+            </div>
+          </div>
+          <div class="row hidden-md hidden-lg hidden-sm" style="margin-top:4vh;margin-bottom:4vh">
+            <a class="article-heading-text-m" href="/article/{{url}}">{{heading}}</a>  <span class="heading-desc"> --{{date}} / By {{username}} </span>
+          </div>
+         {{/each}}
+         </div>
+        </div>
+
+        <div class="col-md-3 hidden-xs">
+        <div class="container-fluid" style="height:25vh;border:1.5px solid #cccccc;border-radius:6px;margin-top:2px">
+          <h4><b>Catgegories</b></h4>
+          <div><a href="/category/aem" style="font-family: 'Times New Roman', Times, serif;font-size:125%">AEM ({{categoryCount.aem}})</a></div>
+          <div><a href="/category/node" style="font-family: 'Times New Roman', Times, serif;font-size:125%">Node ({{categoryCount.node}})</a></div>
+          <div><a href="/category/web" style="font-family: 'Times New Roman', Times, serif;font-size:125%">Web ({{categoryCount.web}})</a></div>
+          <div><a href="/category/distributed-systems" style="font-family: 'Times New Roman', Times, serif;font-size:125%">Distributed Systems ({{categoryCount.distributedSystems}})</a></div>
+          <div><a href="/blog" style="font-family: 'Times New Roman', Times, serif;font-size:125%">All</a></div>
+        </div>
+        <br>
+        <div class="container-fluid" style="height:40vh;border:1.5px solid #cccccc">
+         <h4><b>Popular Posts</b></h4>
+         {{#each popular}}
+         <a class="popular_post" href="/article/{{url}}">{{heading}}</a>
+         <br>
+         <br>
+         {{/each}}
+       </div>
+     </div>
+       
+      </div>
+
+  </div>
+{{> footer}}
+<script type="text/javascript">
+$(".article-desc").text(function(index, currentText) {
+    return currentText.substr(0, 450)+"....";
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+        $(document).ready(function() {
+            var windowHeight = $(window).height();
+            $(window).on('scroll', function() {
+                var y_scroll_pos = window.pageYOffset;
+                var scroll_pos_test = 150; // set to whatever you want it to be
+                var h = $('#top-head').height();
+                var xo = (h * 100)/windowHeight;
+                if (y_scroll_pos > scroll_pos_test && xo > 7.5) {
+                    $(".top-link").switchClass("top-link", "top-link-small", 500);
+                    $(".display-user").switchClass("display-user", "display-user-small", 500);
+                    $(".top-head").switchClass("top-head", "top-head-small", 500);
+                    $(".logo").switchClass("logo", "logo-small", 500);
+                    $(".post-article").switchClass("post-article", "post-article-small", 500 );
+                }
+
+                if (y_scroll_pos < scroll_pos_test && xo < 7.5) {
+                    $(".top-link-small").switchClass("top-link-small", "top-link", 500);
+                    $(".display-user-small").switchClass("display-user-small", "display-user", 500);
+                    $(".top-head-small").switchClass("top-head-small", "top-head", 500);
+                    $(".logo-small").switchClass("logo-small", "logo", 500);
+                    $( ".post-article-small" ).switchClass( "post-article-small", "post-article", 500 );
+                }
+            });
+            });
+</script>

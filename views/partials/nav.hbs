@@ -1,0 +1,20 @@
+<div class="row top-head hidden-xs" id="top-head" >
+    <div class="col-md-1"></div>
+    <div class="col-md-3 col-xs-3">
+        <a href="/">
+            <div class="logoContainer"><img class="logo" alt="CodeLilt" src="/images/logo.png">
+            </div>
+        </a>
+    </div>
+    <div class="col-md-8 col-xs-9">
+        {{#if user}}
+        <span class="display-user"><a class="display-user-text" href="/signout">SignOut</a></span>
+        <span class="display-user"> Welcome <a class="display-user-text" href="#">{{user.username}}</a></span> {{else}}
+        <a class="top-link" href="/login">SignIn</a> {{/if}}
+        <a class="top-link" href="/contact">Contact</a>
+        <a class="top-link" href="/about">About</a>
+        <a class="top-link" href="/notes">qNotes</a>
+        <a class="top-link" href="/reads">My Reads</a>
+        <a class="top-link" href="/blog">Blog</a>
+    </div>
+</div>

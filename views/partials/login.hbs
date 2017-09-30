@@ -1,0 +1,45 @@
+<html>
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '193745434356653',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+	    FB.getLoginStatus(function(response) {
+      if(response.status ==='connect')
+	  {
+	  document.getElementById('status').innerHTHL('You are logged in')
+	  }
+	  else{
+	  document.getElementById('status').innerHTHL('You are not logged in')
+	  }
+    });
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   function login(){
+   FB.login(function(response)){
+	if(response.status ==='connect')
+	  {
+	  document.getElementById('status').innerHTHL('You are logged in')
+	  }
+	  else{
+	  document.getElementById('status').innerHTHL('You are not logged in')
+	  }
+	});
+   }
+</script>
+<div id="status"></div>
+<button onclick="login"/>
+</body>
+</html>

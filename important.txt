@@ -1,0 +1,10 @@
+C:\Program Files\MongoDB\Server\3.2\bin>mongoimport --db nodeapp3 --collection articles --file C:\Users\gdagur\Desktop\a.json
+
+tail */log*/*
+
+ctl_app restart
+
+scp /c/Users/gdagur/Desktop/a.json 576600632d5271d28c00010b@nodeapp3-keepit.rhcloud.com:/var/lib/openshift/576600632d5271d28c00010b/nodejs/books.json
+
+mongoimport --host 127.9.42.130 --port 27017 --username admin --password Eawj7YX215HN --db nodeapp3 --collection books --file /var/lib/openshift/576600632d5271d28c00010b/nodejs/books.json
+

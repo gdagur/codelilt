@@ -1,0 +1,12 @@
+.handpointer{
+	 cursor: pointer; cursor: hand; 
+}
+
+.full-width{
+	width:100%;
+}
+
+.admin_inputs{
+	background-color: #e6f2ff;
+	padding:10px;
+}

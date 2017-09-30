@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>CodeLilt - Quick Notes</title>
+  <meta name="description" content="A Mongo based quick note down flatform">
+  <meta name="keywords" content="AEM,CQ5,Node JS, Node.JS, Mongo, Web Development, Solutions, Consulting, Hire, CodeLilt">
+  <meta name="author" content="Gajendra Dagur">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta property="og:image" content="/images/logo.png">
+  <meta property="og:url" content="http://www.codelilt.com/">
+  <meta property="og:site_name" content="Gajendra Dagur Portfolio- AEM, Node.JS">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="A Mongo based quick note down flatform">
+  <meta property="og:title" content="AEM, Node.JS and Web solutions - Gajendra Dagur">
+
+  {{> common_JS_CSS}}
+  {{> heading_animation_js}}
+
+
+  <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+  <script type="text/javascript">
+   bkLib.onDomLoaded(function() {
+    var myNicEditor = new nicEditor({fullPanel : true});
+    myNicEditor.setPanel('panel');
+    myNicEditor.addInstance('edit-note');
+  });
+
+   var createNote = function(callback, errorCallback) {
+    $.ajax({
+      type: 'POST',
+      url: '/create-note',
+      data: {
+        title: $('#noteName').val(),
+        isPublic: $('#isPublic').val()
+      },
+      success: function(data) {
+        callback(data);
+      },
+      error: function(request, status, error) {
+        errorCallback(error);
+      }
+    });
+
+  };
+
+  $( document ).ready(function(){
+    {{#if user}}
+    $(document).on("click", "div[id=newNote]", function(event) {
+    $('#newNoteModal').modal('show');
+  });
+    {{else}}
+    $(document).on("click", "div[id=newNote]", function(event) {
+    window.location.href="/login";
+  });
+    $('#edit-note').attr('contenteditable','false');
+    $('#panel').attr('unselectable','on');
+    {{/if}}
+
+   $( "form" ).submit(function( event ) {
+    createNote(function(data){
+      if(data){
+        if(data.noteExists){
+          $('#noteExists').show();
+        }else if(data.success){
+          window.location.reload();
+        }
+      }
+    }, function(error){
+      $('#displayMessage').html('<span style="color:red">'+error+'</span>');
+    })
+    return false;
+  });
+
+   $('.note-title:first').addClass('active');
+
+   $(document).on("click", "button[id=saveContent]", function(event) {
+    $.ajax({
+      type: 'POST',
+      url: '/save-note',
+      data: {
+        title: $('.active:first').text().trim(),
+        content: $('#edit-note').html(),
+        isPublic: $('#isPublicCfg')[0].checked
+      },
+      success: function(data) {
+        if(data.success){
+        $('#displayMessage').html('<span style="color:green">Note saved successfull<span>');
+       }else{
+        $('#displayMessage').html('<span style="color:red">'+data+'</span>');
+       }
+      },
+      error: function(request, status, error) {
+        $('#displayMessage').html('<span style="color:red">'+error+'</span>');
+      }
+    });
+  });
+
+   $('.note-title').on("click", function(event) {
+    $('.notes-col').addClass("disabled-element");
+    $('#displayMessage').text("");
+    var title = $('.active.myNotes:first').text().trim();
+    var content = $('#edit-note').html();
+    var clickedTitle =  $(this).text().trim();
+    var user = $(this).attr( "user" );
+    var isPublic = $(this).attr("isPublic");
+    if(isPublic && isPublic=="true"){
+      $('#edit-note').attr('contenteditable','false');
+      $('#panel').attr('unselectable','on');
+    }else{
+      $('#edit-note').attr('contenteditable','true');
+      $('#panel').attr('unselectable','off');
+    }
+    $('.active:first').removeClass('active');
+    $(this).addClass('active');
+    $.ajax({
+      type: 'POST',
+      url: '/save-get',
+      data: {
+        title: title,
+        content: content,
+        clickedTitle: clickedTitle,
+        user:user,
+        isPublic:isPublic
+      },
+      success: function(data) {
+        $('#edit-note').empty();
+        $('#edit-note').html(data.note.content);
+        $('#userCfg').text(data.note.user);
+        $('#isPublicCfg').prop('checked', data.note.isPublic);
+        $('.notes-col').removeClass("disabled-element");
+      },
+      error: function(request, status, error) {
+        $('#displayMessage').html('<span style="color:red">'+error+'</span>');
+      }
+    });
+  });
+
+ });
+</script>
+<script type="text/babel" src="/scripts/note.js"></script>
+<link rel="stylesheet" href="/stylesheets/front.css">
+</head>
+<body>
+  {{> mobile_nav}}
+  {{> nav_grey}}
+  <div class="container-fluid full-bg">
+   <div class="row" style="margin-top:8vh;min-height:85vh ">
+    <div class="col-md-2">
+      <div class="row notes-col" style="height:43vh;background-color: #e6ffff;border-style: ridge ridge ridge ridge;">
+      <div class="col-md-12" style="height: 4vh">
+      <span>My Notes</span>
+      </div>
+        {{#each myNotes}}
+        <div class="col-md-12 note-title handpointer myNotes" user="{{this.user}}" style="margin:1px;background-color: white;border: 2px;border-style: ridge;border-color: grey; border-width:1px;border-radius: 3px">
+          {{this.title}}
+        </div>
+        {{/each}}
+        
+      </div>
+      <div class="row notes-col" style="height:43vh; background-color: #e6e6ff;border-style: ridge ridge ridge ridge;">
+      <div class="col-md-12" style="height: 4vh">
+      <span>Public Notes</span>
+      </div>
+        {{#each publicNotes}}
+        <div class="col-md-12 note-title handpointer publicNotes" isPublic="true" user="{{this.user}}" style="margin:1px;background-color: white;border: 2px;border-style: ridge;border-color: grey; border-width:1px;border-radius: 3px">
+          {{this.title}}
+        </div>
+        {{/each}}
+        
+      </div>
+      
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div id="panel"></div>
+        <div id="edit-note" style="background-color: rgba(250, 250, 245,0.8);height: 82vh;padding-left:1%;margin-top:0.2%;overflow: scroll;" class="col-md-12">
+         <span>{{{note.content}}}</span>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+ <div class="row" style="background-color: #e6e6ff; height: 7vh">
+  <div class="col-md-2" style="border-style: ridge none none none;">
+    <div class="row" style="margin: 2%">
+      <div id="newNote" class="col-md-12 handpointer" style="background-color: white;text-align: center;border-radius: 3px;border-style: none ridge none none;">
+        <i class="fa fa-plus-circle" style="font-size: 5vh" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10" style="border-style: ridge none none ridge; height: 100%">
+  
+    <div class="row" style="margin-top:1vh;">
+      <span style="margin-left: 10px">Notes By : <spnan id="userCfg">{{note.user}}</spnan></span>
+      {{#if user}}
+      <input type="checkbox" checked="{{note.isPublic}}" style=" margin-left: 10px" id="isPublicCfg" name="isPublicCfg"><label > IsPublic </label>
+      
+      <button id="deleteNote" style="margin-left: 10px"> Delete</button>
+      <button id="saveContent" style="margin-left: 10px">Save</button>
+      <span id="displayMessage"></span>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<div id="newNoteModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="/newNote" method="post">
+        <div class="modal-header">
+          <div class="closeBtn close" data-dismiss="modal" style="float:right">
+            <a href="#"> X</a>
+          </div>
+        </div>
+        <div class="modal-body" style="font-size:20px;font-family: 'Times New Roman', Times, serif;text-align:center">
+          Note Title: <input type="text" id="noteName" name="title"/>
+          Public <input type="checkbox" id="isPublic" name="isPublic">
+        </div>
+        <div class="modal-footer">
+          <span id="noteExists" hidden>You already have a note existing with the same name</span>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+{{> footer}}
+</body>
+</html>

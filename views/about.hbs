@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Portfolio Website of a professional developer based in India, Specializing in AEM Node.JS and web development. Gajendra provides consulting, development and support services for AEM, Node.js and Web Solutions and have experience working for various industry leader clients.">
+  <meta name="keywords" content="AEM,CQ5,Node JS, Node.JS, Web Development, Solutions, Consulting, Hire, CodeLilt">
+  <meta name="author" content="Gajendra Dagur">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta property="og:image" content="/images/logo.png">
+  <meta property="og:url" content="http://www.codelilt.com/">
+  <meta property="og:site_name" content="Gajendra Dagur Portfolio- AEM, Node.JS">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Portfolio Website of a professional developer based in India, Specializing in AEM Node.JS and web development. Gajendra provides consulting, development and support services for AEM, Node.js and Web development and have experience working for various industry leader clients.">
+  <meta property="og:title" content="AEM, Node.JS and Web solutions - Gajendra Dagur">
+
+  <title>AEM, Node.js and Web Solutions -  Consulting development and support</title>
+
+  {{> common_JS_CSS}}
+  <link rel="stylesheet" href="/stylesheets/front.css">
+  {{#if PROD_MODE}}
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-80562674-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+{{/if}}
+</head>
+<body>
+{{> mobile_nav}}
+{{> nav_grey}}
+  <div class="container-fluid full-bg">
+    <div class="container" style="margin-top:15vh">
+      <div class="row ">
+        <div class="col-md-12"><p class="about-text"><b>About Me!<b> <br>I am a fullstack developer with an intense passion for knowledge and learning. <br>
+          I manage this website where I keep experimenting with latest and exciting technologies and <a href="/blog">blog</a> about my findings and learnings. For a long time to come I was awed with Node.JS and Redux and what they had to offer but never really got much chance to get my hands on it. So I built CodeLilt in Node.JS and React from scratch and that's thats how it came in to existence. Since then I have already integrated Redux and many Node modules here- like <a href="">Passport</a> <a href="">Express</a> <a href="">Gulp</a> <a href="">Socket.io</a> <a href="">async</a> and many others. <br>
+          Currently I am working on few things with Redux to add make this website more dynamica and modular. I do share about all the stuff I do here and about the things that I have learned so far through blogs <a href="/blog">here</a>.<br>
+          When I can't be found here, Chances are I am busy helping out a business in creating a compelling online presence or hiking up a snow covered trail at high altitude. Would like to get in touch? <a href="/contact">Contact Me</a><br>
+          
+        </p></div>
+        
+      </div>
+    </div>
+  </div>
+  {{> footer}}
+</body>
+</html>

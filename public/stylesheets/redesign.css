@@ -1,0 +1,170 @@
+.fourth {
+	height: 100%;
+	width:100%;
+}
+.third {
+	height:100%;
+	width:100%;
+}
+
+.third-placeh{
+	height:5%;
+}
+
+.third-f {
+height:50%;
+background-color:#004d4d;
+}
+.third-s {
+	height:50%;
+	
+}
+.fourth-f {
+	height:50%;
+
+}
+.fourth-s {
+	height:50%;
+	background-color:#004d4d;
+}
+
+.forte{
+	height: 50%;
+	text-align: center;
+}
+
+.forte-parent{
+	height: 100%;
+	text-align: center;
+}
+
+.forte-head{
+	font-family: Cinzel;
+	font-weight: 700;
+	font-size: 150%;
+	margin-top: 2vh;
+	color: white;
+}
+
+.forte-head-c{
+	font-family: Cinzel;
+	font-weight: 700;
+	font-size: 150%;
+	margin-top: 2vh;
+	color: #004d4d;
+}
+.forte-subhead-c {
+	font-family: 'Lora', serif;
+	font-weight: 400;
+	color: #a6a6a6;
+	font-size: 120%;
+}
+
+.forte-subhead {
+	font-family: 'Lora', serif;
+	font-weight: 400;
+	color: #bfbfbf;
+	font-size: 120%;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.forte-section {
+	text-align: center;
+	position: relative;
+ 	top: 30%;
+    transform: translateY(-30%);
+	font-family: 'Cinzel';
+	font-size: 400%;
+	color: white;
+}
+
+.forte-section-projects {
+	text-align: center;
+	position: relative;
+ 	top: 40%;
+    transform: translateY(-40%);
+	font-family: 'Cinzel';
+	font-size: 200%;
+	color: #004d4d;
+	height: 30%;
+
+	border-right: solid #004d4d;
+}
+
+.forte-section-node {
+	text-align: center;
+	position: relative;
+ 	top: 30%;
+    transform: translateY(-30%);
+	font-family: 'Cinzel';
+	font-size: 200%;
+	color: #004d4d;
+	height: 40%;
+	padding-top: 15%;
+	border-right: solid #004d4d;
+}
+.forte-section-web {
+	text-align: center;
+	position: relative;
+ 	top: 40%;
+
+	font-family: 'Cinzel';
+	font-size: 400%;
+	color: white;
+	height: 60%;
+	border-right: solid white;
+}
+
+.forte-projects{
+	position: relative;
+ 	top: 25%;
+
+
+}
+
+.forte-cp{
+	text-align: left;
+	font-family: 'Lora', serif;
+	font-weight: 400;
+	font-size: 150%;
+	color: #004d4d;
+}
+
+.project-names {
+	margin-top: 4%;
+	text-align: left;
+	color: #999999;
+	font-size: 120%;
+}
+.forte-web-head{
+	font-family: Cinzel;
+	font-weight: 700;
+	font-size: 180%;
+	text-align: left;
+	color: white;
+	top: 20%;
+	position: relative;
+    transform: translateY(-20%);
+}
+
+.forte-web-subhead {
+	font-family: 'Lora', serif;
+	font-weight: 400
+	font-size: 120%;
+	position: relative;
+	margin-top: 4%;
+	text-align: left;
+	color: #bfbfbf;
+	font-size: 120%;
+	top: 20%;
+}
+
+.forte-parent span {
+	border-bottom: 1px solid white;
+}

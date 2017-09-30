@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8">
+  
+  <meta name="description" content="Portfolio Website of a professional developer based in India, Specializing in AEM Node.JS and web development. Gajendra provides consulting, development and support services for AEM, Node.js and Web Solutions and have experience working for various industry leader clients.">
+  <meta name="keywords" content="AEM,CQ5,Node JS, Node.JS, Web Development, Solutions, Consulting, Hire, CodeLilt">
+  <meta name="author" content="Gajendra Dagur">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta property="og:image" content="/images/logo.png">
+  <meta property="og:url" content="http://www.codelilt.com/">
+  <meta property="og:site_name" content="Gajendra Dagur Portfolio- AEM, Node.JS">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Portfolio Website of a professional developer based in India, Specializing in AEM Node.JS and web development. Gajendra provides consulting, development and support services for AEM, Node.js and Web development and have experience working for various industry leader clients.">
+  <meta property="og:title" content="AEM, Node.JS and Web solutions - Gajendra Dagur">
+
+  <title>CodeLilt - Join intelligent community of AEM, Node.JS and Web developers</title>
+
+{{> common_JS_CSS}}
+{{#if PROD_MODE}}
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-80562674-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+{{/if}}
+  <link rel="stylesheet" href="/stylesheets/front.css">
+</head>
+<body>
+{{> mobile_nav}}
+{{> nav_grey}}
+  <div class="container-fluid full-bg">
+    <div class="row" style="height:85%;margin-top:20vh ">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-5">
+    <div style="text-align:center;margin-bottom:5%"><h3>Sign Up</h3></div>
+      <form class='form-signin' action='/signup' method='POST'>
+        <input type='text' name='username' class='form-control' placeholder='Username' required, autofocus/><br>
+        <input type='password' name='password' class='form-control nomargin' placeholder='Password' required/><br>
+        <input type='email' name='email' class='form-control' placeholder='Email' required/><br>
+        <button class='btn btn-lg btn-primary btn-block' type='submit'> Register </button><br>
+      </form>
+      {{#if message}}
+      <div class="alert alert-danger fade in">
+      {{message}}
+      </div>
+      {{/if}}
+    </div>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+{{> footer}}
+</body>
+</html>
