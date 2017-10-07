@@ -13,9 +13,9 @@
 // 	'url' : url
 // }
 
-var mongoURL = 'mongodb://localhost:27017/nodeapp3';                                                                                                                                                                                                                                            
+var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;                                                                                                                                                                                                                                            
                                                                                                                                                                                                                                                                      
-if (process.env.DATABASE_SERVICE_NAME) {                                                                                                                                                                                                         
+if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {                                                                                                                                                                                                         
   var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),                                                                                                                                                                                            
       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],                                                                                                                                                                                                   
       mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],                                                                                                                                                                                                   
