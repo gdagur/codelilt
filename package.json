@@ -2,13 +2,16 @@
   "name": "nodeapp3",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "node start.js"
+  "engine": {
+    "node": "*",
+    "npm": "*"
   },
-  "devDependencies": {
-    "enzyme": "^2.4.1",
-    "react-addons-test-utils": "^15.3.0",
-    "react-scripts": "^0.6.0"
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdagur/codelilt.git"
   },
   "dependencies": {
     "async": "^2.0.1",
@@ -22,17 +25,13 @@
     "express-hbs": "~1.0.0",
     "express-session": "^1.14.0",
     "jade": "~1.11.0",
-    "mongodb": "^2.1",
+    "mongodb": "^2.1.16",
     "mongoose": "^4.8.1",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
     "passport-local": "~1.0.0",
     "serve-favicon": "~2.3.0",
     "sitemap": "^1.8.0",
-    "static-favicon": "~1.0.0",
-	"react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "static-favicon": "~1.0.0"
   }
 }
